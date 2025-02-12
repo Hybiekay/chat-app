@@ -35,7 +35,7 @@ class AuthService {
   Future<(bool, String)> login(
       {required String email, required String password}) async {
     try {
-      var section = await account.createEmailPasswordSession(
+      await account.createEmailPasswordSession(
           email: email, password: password);
       return (true, "Login Successfully");
     } on AppwriteException catch (error) {
