@@ -27,6 +27,5 @@ class ThemeProvider extends ChangeNotifier {
       storage.write(key: 'theme', value: "dark");
       notifyListeners();
     }
-    print(mode);
   }
 }

@@ -1,4 +1,6 @@
 import 'package:appwrite/appwrite.dart';
+import 'package:dating_app/core/helper/hive_databases.dart';
+import 'package:dating_app/core/helper/secure_storage.dart';
 import 'package:dating_app/model/user_model.dart';
 
 class AuthService {
@@ -35,8 +37,10 @@ class AuthService {
   Future<(bool, String)> login(
       {required String email, required String password}) async {
     try {
-      await account.createEmailPasswordSession(
+      var session = await account.createEmailPasswordSession(
           email: email, password: password);
+      SecureStorage().saveUserId(session.userId);
+
       return (true, "Login Successfully");
     } on AppwriteException catch (error) {
       return (false, (error.message ?? "UnKnown Erorr Occurred"));

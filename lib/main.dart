@@ -1,9 +1,7 @@
 import 'package:appwrite/appwrite.dart';
 import 'package:dating_app/core/constants/appwrite_constant.dart';
 import 'package:dating_app/core/theme/custom_theme.dart';
-import 'package:dating_app/provider/auth_provider.dart';
-import 'package:dating_app/provider/splash_provider.dart';
-import 'package:dating_app/provider/theme_provider.dart';
+import 'package:dating_app/provider/provider.dart';
 import 'package:dating_app/view/splash.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,7 +12,9 @@ void main() {
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (_) => ThemeProvider()),
     ChangeNotifierProvider(create: (_) => SplashProvider()),
-    ChangeNotifierProvider(create: (_) => AuthProvider())
+    ChangeNotifierProvider(create: (_) => AuthProvider()),
+    ChangeNotifierProvider(create: (_) => LayoutProvider()),
+    ChangeNotifierProvider(create: (_) => CurrentUserProvider()),
   ], child: const MyApp()));
 }
 

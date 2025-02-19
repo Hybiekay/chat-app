@@ -5,6 +5,6 @@ extension SizedboxOnInt on int {
         height: toDouble(),
       );
   Widget get toWidthWhiteSpace => SizedBox(
-        width: this.toDouble(),
+        width: toDouble(),
       );
 }

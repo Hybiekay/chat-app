@@ -22,11 +22,11 @@ class CustomTheme {
           ),
         ),
       ),
-      inputDecorationTheme: InputDesign(),
+      inputDecorationTheme: inputDesign(),
     );
   }
 
-  static InputDecorationTheme InputDesign() {
+  static InputDecorationTheme inputDesign() {
     return InputDecorationTheme(
       hintStyle: CustomTextstyle.caption,
       border: UnderlineInputBorder(
@@ -63,6 +63,6 @@ class CustomTheme {
             // textStyle: TextStyle(color: Colors.black)
           ),
         ),
-        inputDecorationTheme: InputDesign());
+        inputDecorationTheme: inputDesign());
   }
 }
