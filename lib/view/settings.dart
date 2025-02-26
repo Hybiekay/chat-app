@@ -3,6 +3,7 @@ import 'package:dating_app/core/theme/custom_colors.dart';
 import 'package:dating_app/core/theme/custom_textstyle.dart';
 import 'package:dating_app/model/user_model.dart';
 import 'package:dating_app/provider/current_user_provider.dart';
+import 'package:dating_app/view/view_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
@@ -44,6 +45,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               left: 0,
               right: 0,
               child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   height: MediaQuery.sizeOf(context).height * 0.78,
                   width: double.infinity,
                   decoration: BoxDecoration(
@@ -55,29 +57,54 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   child: userModel == null
                       ? Container()
                       : Column(children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              CircleAvatar(
-                                radius: 40,
-                              ),
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    userModel.name,
-                                    style: CustomTextstyle.title,
+                          Container(
+                            margin: EdgeInsets.only(
+                              top: 30,
+                              bottom: 10,
+                            ),
+                            height: 60,
+                            child: Row(
+                              spacing: 5,
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                CircleAvatar(
+                                  radius: 40,
+                                ),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => ViewProfile(
+                                          userModel: userModel,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        userModel.name,
+                                        style: CustomTextstyle.title,
+                                      ),
+                                      Text(
+                                        userModel.about,
+                                        style: CustomTextstyle.body,
+                                      ),
+                                    ],
                                   ),
-                                  Text(
-                                    userModel.about,
-                                    style: CustomTextstyle.body,
-                                  ),
-                                  SizedBox(
-                                    height: 20,
-                                  ),
-                                ],
-                              ),
-                            ],
+                                ),
+                                Spacer(),
+                                Image.asset(ImagesConst.qrCode),
+                              ],
+                            ),
+                          ),
+                          Divider(
+                            height: 0.5,
                           ),
                           SettingsListTile(
                             title: "Account",
@@ -144,7 +171,7 @@ class SettingsListTile extends StatelessWidget {
         ),
         title: Text(
           title,
-          style: CustomTextstyle.title,
+          style: CustomTextstyle.title.copyWith(fontSize: 18),
         ),
         subtitle: Text(
           subTitle,

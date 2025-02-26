@@ -16,4 +16,10 @@ class ImagesConst {
   static const String settings = "$imagePath/svgs/settings.svg";
   static const String user = "$imagePath/svgs/user.svg";
   static const String users = "$imagePath/svgs/Users.svg";
+  static const String qrCode = "$imagePath/Qr code.png";
+
+  static const String phone = "$imagePath/svgs/phone.svg";
+  static const String text = "$imagePath/svgs/text.svg";
+  static const String video = "$imagePath/svgs/Videos.svg";
+  static const String more = "$imagePath/svgs/More.svg";
 }

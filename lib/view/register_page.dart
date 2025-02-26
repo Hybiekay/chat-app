@@ -94,7 +94,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                     }
                                   },
                                   decoration: InputDecoration(
-                                    hintText: "Enter Your Email",
+                                    hintText: "Enter Your Full name",
                                   ),
                                 ),
                                 Text("Email"),

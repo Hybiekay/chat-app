@@ -19,8 +19,8 @@ class SplashProvider extends ChangeNotifier {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => HomeScreen()));
       } on AppwriteException catch (e) {
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => LoginPage()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => OnboardingScreen()));
       } catch (e) {
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => OnboardingScreen()));

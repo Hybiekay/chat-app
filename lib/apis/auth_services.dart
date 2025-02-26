@@ -1,5 +1,6 @@
+import 'dart:developer';
+
 import 'package:appwrite/appwrite.dart';
-import 'package:dating_app/core/helper/hive_databases.dart';
 import 'package:dating_app/core/helper/secure_storage.dart';
 import 'package:dating_app/model/user_model.dart';
 
@@ -43,7 +44,22 @@ class AuthService {
 
       return (true, "Login Successfully");
     } on AppwriteException catch (error) {
+      if (error.code == 401) {
+        return (true, "Login Successfully");
+      }
       return (false, (error.message ?? "UnKnown Erorr Occurred"));
+    }
+  }
+
+  Future<bool> logout() async {
+    try {
+      SecureStorage().deleteUserId();
+      SecureStorage().deleteUserDetails();
+      await account.deleteSessions();
+      return true;
+    } on AppwriteException catch (error) {
+      log(error.message.toString());
+      return false;
     }
   }
 }

@@ -15,6 +15,7 @@ void main() {
     ChangeNotifierProvider(create: (_) => AuthProvider()),
     ChangeNotifierProvider(create: (_) => LayoutProvider()),
     ChangeNotifierProvider(create: (_) => CurrentUserProvider()),
+    ChangeNotifierProvider(create: (_) => UserProvider()),
   ], child: const MyApp()));
 }
 

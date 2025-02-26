@@ -16,7 +16,7 @@ class SecureStorage {
     return id;
   }
 
-  Future<void> deleteUserId(String id) async {
+  Future<void> deleteUserId() async {
     await storage.delete(
       key: userId,
     );
@@ -36,7 +36,7 @@ class SecureStorage {
     );
   }
 
-  Future<void> deleteUserDetails(String data) async {
+  Future<void> deleteUserDetails() async {
     await storage.delete(
       key: userDetail,
     );

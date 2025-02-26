@@ -4,6 +4,8 @@ import 'package:dating_app/core/constants/appwrite_constant.dart';
 import 'package:dating_app/core/helper/custom_snack_bar.dart';
 import 'package:dating_app/model/user_model.dart';
 import 'package:dating_app/view/home_screen.dart';
+import 'package:dating_app/view/login_page.dart';
+import 'package:dating_app/view/onboarding.dart';
 import 'package:dating_app/view/upload_image.dart';
 import 'package:flutter/material.dart';
 
@@ -45,22 +47,33 @@ class AuthProvider extends ChangeNotifier {
     isLoarding = true;
     notifyListeners();
 
-    UserModel userModel =
-        UserModel(id: ID.unique(), email: email, about: "", name: name);
+    UserModel userModel = UserModel(
+        id: ID.unique(), email: email, about: "Am using Chatbox", name: name);
     final (isSucces, message) =
         await authService.register(userModel: userModel, password: password);
     if (isSucces) {
       CustomSnackBar.succes(context: context, message: message);
       isLoarding = false;
       notifyListeners();
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-              builder: (context) => UploadImage(id: userModel.id)));
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => LoginPage()));
     } else {
       CustomSnackBar.error(context: context, message: message);
       isLoarding = false;
       notifyListeners();
     }
+  }
+
+  Future logOut(BuildContext context) async {
+    isLoarding = true;
+    notifyListeners();
+    await authService.logout();
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => OnboardingScreen()),
+        (r) => false);
+
+    isLoarding = false;
+    notifyListeners();
   }
 }
