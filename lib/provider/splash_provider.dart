@@ -1,9 +1,9 @@
+import 'dart:developer';
 import 'package:appwrite/appwrite.dart';
 import 'package:dating_app/core/helper/secure_storage.dart';
 import 'package:dating_app/provider/auth_provider.dart';
 import 'package:dating_app/provider/current_user_provider.dart';
 import 'package:dating_app/view/home_screen.dart';
-import 'package:dating_app/view/login_page.dart';
 import 'package:dating_app/view/onboarding.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -19,6 +19,7 @@ class SplashProvider extends ChangeNotifier {
         Navigator.push(
             context, MaterialPageRoute(builder: (context) => HomeScreen()));
       } on AppwriteException catch (e) {
+        log(e.message.toString());
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => OnboardingScreen()));
       } catch (e) {

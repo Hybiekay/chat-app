@@ -65,7 +65,7 @@ class CurrentUserServices {
 
       UserModel user = UserModel.fromMap(docs.data);
       return (true, user);
-    } on AppwriteException catch (error) {
+    } on AppwriteException {
       return (false, null);
     }
   }

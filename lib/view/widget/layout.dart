@@ -1,5 +1,6 @@
 import 'package:dating_app/core/constants/images_const.dart';
 import 'package:dating_app/core/theme/custom_colors.dart';
+import 'package:dating_app/provider/current_user_provider.dart';
 import 'package:dating_app/provider/layout_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -16,6 +17,7 @@ class Layout extends StatefulWidget {
 class _LayoutState extends State<Layout> {
   @override
   Widget build(BuildContext context) {
+    context.watch<CurrentUserProvider>().getCurrentUser();
     var layoutProvider = context.watch<LayoutProvider>();
     return Scaffold(
       body: widget.children[layoutProvider.currentIndex],

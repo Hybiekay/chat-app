@@ -89,7 +89,7 @@ class _ViewProfileState extends State<ViewProfile> {
                           style: CustomTextstyle.title.copyWith(
                               color: CustomColors.white, fontSize: 20)),
                       Text(
-                        "@" + widget.userModel.name.toLowerCase(),
+                        "@${widget.userModel.name.toLowerCase()}",
                         style: CustomTextstyle.body
                             .copyWith(color: CustomColors.white),
                       ),

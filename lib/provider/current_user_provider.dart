@@ -46,6 +46,7 @@ class CurrentUserProvider extends ChangeNotifier {
       notifyListeners();
       return File(file.path);
     }
+    return null;
   }
 
   Future pickImageAndUpload(ImageSource source) async {
@@ -66,6 +67,7 @@ class CurrentUserProvider extends ChangeNotifier {
       }
     }
 
+    // ignore: empty_catches
     try {} on AppwriteException catch (error) {
     } catch (e) {}
   }

@@ -8,7 +8,7 @@ class UserProvider extends ChangeNotifier {
       databaseId: AppwriteConstant.databaseId,
       userCollectionId: AppwriteConstant.usersCollectionId,
       databases: AppwriteConstant().appWriteDatabases);
-  List<UserModel> _allUser = [];
+  final List<UserModel> _allUser = [];
   List<UserModel> get allUser => _allUser;
 
   Future getAllUser() async {

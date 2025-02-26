@@ -6,7 +6,6 @@ import 'package:dating_app/model/user_model.dart';
 import 'package:dating_app/view/home_screen.dart';
 import 'package:dating_app/view/login_page.dart';
 import 'package:dating_app/view/onboarding.dart';
-import 'package:dating_app/view/upload_image.dart';
 import 'package:flutter/material.dart';
 
 class AuthProvider extends ChangeNotifier {
